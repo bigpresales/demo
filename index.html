@@ -9,12 +9,7 @@
             background-color: #35C4B5;
             font-family: Helvetica Neue LT W1G 75 Bold;
             background-image: url('RJSITU.jpg'); /* Add your image URL here */
-            background-size: cover; /* Ensure the image covers the entire background */
-            background-position: center; /* Center the background image */
-            background-repeat: no-repeat; /* Prevent the image from repeating */
-            background-attachment: fixed; /* Keep the background image fixed in place */
-            display: flex;
-            flex-direction: column;
+            background-size: flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -25,23 +20,29 @@
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
-            width: 450px; /* Adjusted width to 450px */
+            width: 90%; /* Adjusted width to 90% for responsiveness */
+            max-width: 450px; /* Maximum width for larger screens */
             text-align: center;
+            box-sizing: border-box; /* Ensure padding is included in the width */
         }
         h1, h2, label {
-            color: #4D4D4D; /* Title and labels in white */
+            color: #4D4D4D; /* Title and labels in dark color */
         }
         select, input, button {
             color: #4D4D4D; /* Text inside inputs and buttons */
             margin: 10px 0;
+            width: 100%; /* Full width for inputs and buttons */
+            padding: 10px; /* Padding for better touch interaction */
+            box-sizing: border-box; /* Ensure padding is included in the width */
         }
         input {
             background-color: white; /* White background for input fields */
-            color: #4D4D4D; /* Dark blue text inside input fields */
         }
         .logo {
             display: block;
             margin: 0 auto 20px;
+            max-width: 100%; /* Ensure the logo is responsive */
+            height: auto; /* Maintain aspect ratio */
         }
         #previewLink {
             margin-top: 20px;
