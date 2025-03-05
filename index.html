@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Print</title>
+    <style>
+        body {
+            background-color: #35C4B5;
+            font-family: Helvetica Neue LT W1G 75 Bold;
+            background-image: url('T&L.jpg'); /* Add your image URL here */
+            background-size: cover; /* Ensure the image covers the entire background */
+            background-position: center; /* Center the background image */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            background-attachment: fixed; /* Keep the background image fixed in place */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            width: 450px; /* Adjusted width to 450px */
+            text-align: center;
+        }
+        h1, h2, label {
+            color: #4D4D4D; /* Title and labels in white */
+        }
+        select, input, button {
+            color: #4D4D4D; /* Text inside inputs and buttons */
+            margin: 10px 0;
+        }
+        input {
+            background-color: white; /* White background for input fields */
+            color: #4D4D4D; /* Dark blue text inside input fields */
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+        }
+        #previewLink {
+            margin-top: 20px;
+            color: #4D4D4D; /* Color for the preview link text */
+            word-wrap: break-word; /* Ensure long URLs wrap */
+        }
+    </style>
+</head>
+<body>
+
+    <img src="Bluebar.jpg" alt="Brother Logo" class="logo" width="490">
+    <div class="container">
+        <h1>Brother Demo Solutions with Smooth Print</h1>
+        <h2>Zustellungsbenachrichtigung</h2>
+        <form id="printForm">
+            <label for="text1Object" id="text1Label">Empfänger:</label><br>
+            <input type="text" id="text1Object" name="text1Object" required><br><br>
+
+            <label for="text2Object" id="text2Label">Abholung/Lieferung:</label><br>
+            <select id="text2Object" name="text2Object">
+                <option value="">Please select...</option>
+                <option value="Ihre Sendung wurde an Ihrem Wunschort hinterlegt">Ihre Sendung wurde an Ihrem Wunschort hinterlegt</option>
+                <option value="Ihre Sendung liegt in der Pakstation 7, Musterplatz 7, 77000 Musterhof">Ihre Sendung liegt in der Pakstation 7, Musterplatz 7, 77000 Musterhof</option>
+                <option value="Ihre Sendung wurde an Ihren Nachbarn ausgeliefert">Ihre Sendung wurde an Ihren Nachbarn ausgeliefert</option>
+            </select><br><br>
+
+            <label for="text3Object" id="text3Label">Abholungszeit:</label><br>
+            <select id="text3Object" name="text3Object">
+                <option value="none">none</option>
+                <option value="Ab Freitag 14:00"><p>Ab Freitag 14:00; <br>Öffnungszeit: Mon-Fre 08:00 - 16:00, Sam 09:00 - 13:00</p></option>
+            </select><br><br>
+
+            <label for="text4Object" id="text4Label">Versandart:</label><br>
+            <select id="text4Object" name="text4Object">
+                <option value="1 Paket">1 Paket</option>
+                <option value="2 Pakete">2 Pakete</option>
+                <option value="3 Pakete">3 Pakete</option>
+                <option value="1 Brief">1 Brief</option>
+            </select><br><br>
+
+            <label for="barcodeObject" id="barcodeLabel">Sendungsnummer:</label><br>
+            <input type="text" id="barcodeObject" name="barcodeObject" required><br><br>
+
+            <button type="button" onclick="previewLink()">Preview Link</button>
+            <button type="button" onclick="sendToPrint()">Send to Print</button>
+        </form>
+
+        <div id="previewLink"></div> <!-- Container for displaying the preview link -->
+        
+        <script>
+            function generateUrl() {
+                const text1 = document.getElementById("text1Object").value;
+                const text2 = document.getElementById("text2Object").value;
+                const text3 = document.getElementById("text3Object").value;
+                const text4 = document.getElementById("text4Object").value;
+                const barcode = document.getElementById("barcodeObject").value;
+
+                const url = `brotherwebprint://print?filename=linerless.lbx&size=rd58mm.bin&text_text1=${encodeURIComponent(text1)}&text_text2=${encodeURIComponent(text2)}&text_text3=${encodeURIComponent(text3)}&text_text4=${encodeURIComponent(text4)}&barcode_barcode2=${encodeURIComponent(barcode)}`;
+                return url;
+            }
+
+            function previewLink() {
+                const url = generateUrl();
+                const previewDiv = document.getElementById("previewLink");
+                if (url) {
+                    previewDiv.textContent = url; // Display the URL as text
+                } else {
+                    previewDiv.textContent = ""; // Clear if no URL
+                }
+            }
+
+            function sendToPrint() {
+                const url = generateUrl();
+                if (url) {
+                    window.open(url, '_blank');
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>
