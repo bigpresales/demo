@@ -15,13 +15,11 @@
             background-attachment: fixed; /* Keep the background image fixed in place */
             display: flex;
             flex-direction: column;
-           ;
+            justify-content: center;
+            align-items: center;
             height: 100vh;
             margin: 0;
-        }
-
-        .container {
-            background-color: rgba(255, 255, 255, 0.8);
+       (255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 10px;
             width: 450px; /* Adjusted width to 450px */
@@ -43,7 +41,8 @@
         .logo {
             display: block;
             margin: 0 auto 20px;
-            max-width: 100%; /* Ensure the logo is responsive */
+            width: 100%; /* Ensure the logo is the same width as the container */
+            max-width: 450px; /* Maximum width for larger screens */
             height: auto; /* Maintain aspect ratio */
         }
         #previewLink {
@@ -55,7 +54,7 @@
 </head>
 <body>
 
-    <img src="Bluebar.jpg" alt="Brother Logo" class="logo" width="490px">
+    <img src="Bluebar.jpg" alt="Brother Logo" class="logo">
     <div class="container">
         <h1>Brother Demo Solutions with Smooth Print</h1>
         <h2>Zustellungsbenachrichtigung</h2>
