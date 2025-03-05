@@ -58,7 +58,11 @@
         <h2>Zustellungsbenachrichtigung</h2>
         <form id="printForm">
             <label for="text1Object" id="text1Label">Empfänger:</label><br>
-            <input type="text" id="text1Object" name="text1Object" required><br><br>
+            <select id="text1Object" name="text1Object" >
+                 <option value="">Please select...</option>
+                <option value="Max Mustermann <br><br> Mustermannstraße 7, <br><br> 77777 Musterstadt"> Max Mustermann <br><br> Mustermannstraße 7, <br><br> 77777 Musterstadt </option>
+                <option value="Ihre Sendung wurde an Ihren Nachbarn ausgeliefert">Ihre Sendung wurde an Ihren Nachbarn ausgeliefert</option>
+            </select><br><br>
 
             <label for="text2Object" id="text2Label">Abholung/Lieferung:</label><br>
             <select id="text2Object" name="text2Object">
